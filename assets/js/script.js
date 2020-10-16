@@ -12,7 +12,7 @@ var completeEditTask = function(taskName, taskType, taskId) {
     taskSelected.querySelector("h3.task-name").textContent = taskName;
     taskSelected.querySelector("span.task-type").textContent = taskType;
     //loop through tasks array and task object with new content
-      debugger;
+      
     for (var i = 0; i < tasks.length; i++){
       if (tasks[i].id === parseInt(taskId)){
         tasks[i].name = taskName;
@@ -82,12 +82,10 @@ else {
     // package up data as an object
     var taskDataObj = {
       name: taskNameInput,
-      type: taskTypeInput
+      type: taskTypeInput,
       
+  
     };
-    
-    // send it as an argument to createTaskEl
-    
   }
 var createTaskEl = function(taskDataObj){
     // create list item
@@ -115,8 +113,6 @@ var createTaskEl = function(taskDataObj){
     saveTasks();
   //increase task counterfor next unique id
   taskIdCounter++;
-  console.log(taskDataObj);
-  console.log(taskDataObj.status);
 };
 var createTaskActions = function(taskId){
   var actionContainerEl = document.createElement("div");
@@ -253,6 +249,17 @@ var taskListEl = event.target.closest(".task-list");
 var saveTasks = function(){
   localStorage.setItem("tasks", JSON.stringify(tasks));
 }
+
+var loadTasks = function(event){
+ //get tasks from local storage
+ localStorage.getItem(JSON.parse(tasks));
+ 
+
+ //Converts tasks from the stringified format back into an array of objects
+ //iterates through tasks array and creates task elements on the page from it
+
+}
+
 formEl.addEventListener("submit", taskFormHandler);
 pageContentEl.addEventListener("click", taskButtonHandler);
 pageContentEl.addEventListener("change", taskStatusChangeHandler);
